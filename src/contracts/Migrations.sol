@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0<0.9.0;
 
 contract Migrations{
@@ -10,11 +11,11 @@ contract Migrations{
         if(msg.sender == owner)
         _;
     }
-    function set_completed(uint completed) public ownerOnly {
+    function setCompleted(uint completed) public ownerOnly {
         last_completed_migration = completed;
     }
     function upgrade (address  new_address) public ownerOnly{
         Migrations upgraded = Migrations(new_address);
-        upgraded.set_completed(last_completed_migration);
+        upgraded.setCompleted(last_completed_migration);
     }
 }
